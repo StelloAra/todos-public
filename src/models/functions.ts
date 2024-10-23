@@ -3,16 +3,29 @@ export function updateTodoList(data: {task: string; isDone: boolean}[], defaultT
         ol.innerHTML = "";
         for (let i=0; i < data.length; i++) {
             let li = document.createElement("li");
-            li.innerHTML = data[i].task;
+
+            let taskNumber = document.createElement("span");
+            taskNumber.className = "task-number";
+            taskNumber.innerHTML = (i + 1).toString();
+            li.appendChild(taskNumber);
 
             let checkbox = document.createElement("input");
             checkbox.type = "checkbox";
             checkbox.checked = data[i].isDone;
+            checkbox.className = "task-checkbox";
             checkbox.addEventListener("change", function() {
                 toggleDone(i, checkbox.checked, data, defaultTasks, ol);
             });
 
-            li.insertBefore(checkbox, li.firstChild);
+            li.appendChild(checkbox);
+
+            let taskName = document.createElement("span");
+            taskName.className = "task-name";
+            taskName.innerHTML = data[i].task;
+            if (data[i].isDone){
+                taskName.classList.add('done');
+            }
+            li.appendChild(taskName);
 
             if (data[i].isDone) {
                 let deliteButton = document.createElement("button");
@@ -23,19 +36,25 @@ export function updateTodoList(data: {task: string; isDone: boolean}[], defaultT
                 li.appendChild(deliteButton);
             }
 
+
+
             let moveUpButton = document.createElement("button");
+            moveUpButton.className = "move-up-button";
             moveUpButton.innerHTML = "\u2191";
             moveUpButton.addEventListener("click", function () {
                 moveTaskUp(i, data, defaultTasks, ol);
             });
 
             let moveDownButton = document.createElement("button");
+            moveDownButton.className = "move-down-button";
             moveDownButton.innerHTML = "\u2193";
             moveDownButton.addEventListener("click", function () {
                 moveTaskDown(i, data, defaultTasks, ol);
             });
             li.appendChild(moveUpButton);
             li.appendChild(moveDownButton);
+
+
     
             ol?.appendChild(li);
         }

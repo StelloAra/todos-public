@@ -1,4 +1,4 @@
-import "./style.css";
+import "./models/style/myStyle.css";
 import "./style.scss";
 import { updateTodoList } from "./models/functions";
 
