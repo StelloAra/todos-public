@@ -1,0 +1,129 @@
+@import 'models/style/mixin.scss';
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    height: 80vh;
+    padding: 20px;
+    border: solid 2px;
+}
+.input-section,
+.todo-section {
+    flex: 1;
+    margin: 10px;
+    border: solid 1px;
+    border-radius: 50px;
+}
+.input-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+.todo-section {
+    text-align: center;
+}
+
+ol {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.task-number {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.task-checkbox {
+    margin-right: 10px;
+}
+.task-name {
+    flex-grow: 1;
+    margin-right: 10px;
+}
+.done {
+    text-decoration: line-through;
+    color: grey;
+}
+.delete-task-button {
+    margin-right: 5px;
+}
+.move-up-button,
+.move-down-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+@include for-mobile {
+    body {
+        background-color:beige ;
+    }
+    .container {
+        flex-direction: column;
+        background-color: orange;
+    }
+    .input-section {
+        background-color: yellow;
+    }
+    .todo-section {
+        background-color: aquamarine;
+        border-bottom-left-radius: 0%;
+        border-bottom-right-radius: 0%;
+    }
+    li {
+        border-bottom: solid 1px green;
+    }
+}
+@include for-tablet {
+    body {
+        background-color: rgb(246, 246, 181);
+    }
+    .container {
+        flex-direction: row;
+        background-color: rgb(251, 185, 63);
+    }
+    .input-section {
+        width: 48%;
+        background-color: yellow;
+    }
+    .todo-section {
+        width: 48%;
+        background-color: aquamarine;
+    }
+}
+@include for-desktop {
+    body {
+        background-color: rgb(247, 247, 149);
+    }
+    .container {
+        flex-direction: row;
+        background-color: rgb(246, 212, 149);
+    }
+    .input-section {
+        width: 48%;
+        background-color: aqua;
+    }
+    .todo-section {
+        width: 48%;
+        background-color: yellowgreen;
+    }
+    
+}
